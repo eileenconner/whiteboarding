@@ -31,7 +31,7 @@ def lucky_numbers(n):
     return lucky_nums
 
 # second implementation of this question; first in whiteboarding.py
-# 
+# check against prev solution 
 
 if __name__ == '__main__':
     import doctest

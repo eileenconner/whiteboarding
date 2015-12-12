@@ -27,8 +27,8 @@ def add_to_zero(nums):
         return True
     nums_copy = nums
     for num in nums:
-        for i in range(len(nums_copy)):
-            if num + nums_copy[i] == 0:
+        for num_2 in nums_copy:
+            if num + num_2 == 0:
                 return True
     return False
 
