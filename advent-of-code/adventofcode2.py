@@ -53,7 +53,7 @@ def extract_file_data(line):
     width = int(data[1])
     height = int(data[2])
 
-    return [length, width, height]
+    return length, width, height
 
 
 input_file = open("input2.txt", "r")
