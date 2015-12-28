@@ -8,21 +8,22 @@
 
 
 def find_gifted_houses(filename):
-    starting = (0, 0)
+    """Return number of houses visited/gifted"""
+    house = (0, 0)
     visited = set()
 
-    visited.add(starting)
+    visited.add(house)
 
     for item in filename:
         if item == "^":
-            starting = (starting[0], (starting[1]+1))
+            house = (house[0], (house[1]+1))
         elif item == "v":
-            starting = (starting[0], (starting[1]-1))
+            house = (house[0], (house[1]-1))
         elif item == ">":
-            starting = ((starting[0]+1), starting[1])
+            house = ((house[0]+1), house[1])
         elif item == "<":
-            starting = ((starting[0]-1), starting[1])
-        visited.add(starting)
+            house = ((house[0]-1), house[1])
+        visited.add(house)
 
     return len(visited)
 
