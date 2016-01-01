@@ -46,6 +46,19 @@ class Node(object):
         self.name = name
         self.children = children or []
 
+    def count_employees_nonrecursive(self):
+        count = 0
+        to_visit = [self]
+
+        while to_visit:
+            employee = to_visit.pop()
+
+            for child in employee.children:
+                count += 1
+                to_visit.append(child)
+
+        return count
+
     def count_employees(self):
         """Return a count of how many employees this person manages.
 
@@ -54,17 +67,15 @@ class Node(object):
         them.
         """
 
-        # incomplete
-        # does not add henri as child of nora: ??
         count = 0
-        descendants = self.children
 
-        while descendants:
-            node = descendants.pop()
-            descendants.extend(node.children)
-            count += 1
-
-        return count
+        if not self.children:
+            return count
+        else:
+            for child in self.children:
+                count += child.count_employees()
+                count += 1
+            return count
 
 
 if __name__ == '__main__':
