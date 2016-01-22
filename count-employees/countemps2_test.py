@@ -4,6 +4,7 @@ import countemps2
 
 
 class CountEmployeesTest(unittest.TestCase):
+
     def test_node_with_no_employees_returns_zero(self):
         node = countemps2.Node('nochildren')
 
@@ -21,6 +22,32 @@ class CountEmployeesTest(unittest.TestCase):
         parent = countemps2.Node('parent', children=[child])
 
         self.assertEqual(2, parent.count_employees())
+
+    def test_node_with_two_children_with_no_children_returns_two(self):
+        child1 = countemps2.Node('child1')
+        child2 = countemps2.Node('child2')
+        parent = countemps2.Node('parent', children=[child1, child2])
+
+        self.assertEqual(2, parent.count_employees())
+
+    def test_node_with_child_and_two_grandchildren_returns_three(self):
+        grandchild1 = countemps2.Node('gc1')
+        grandchild2 = countemps2.Node('gc2')
+        child = countemps2.Node('child', children=[grandchild1, grandchild2])
+        parent = countemps2.Node('parent', children=[child])
+
+        self.assertEqual(3, parent.count_employees())
+
+    def test_node_w_two_children_w_two_children_apiece_returns_six(self):
+        grandchild1 = countemps2.Node('gc1')
+        grandchild2 = countemps2.Node('gc2')
+        grandchild3 = countemps2.Node('gc3')
+        grandchild4 = countemps2.Node('gc4')
+        child1 = countemps2.Node('child1', children=[grandchild1, grandchild2])
+        child2 = countemps2.Node('child2', children=[grandchild3, grandchild4])
+        parent = countemps2.Node('parent', children=[child1, child2])
+
+        self.assertEqual(6, parent.count_employees())
 
 
 if __name__ == '__main__':
