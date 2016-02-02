@@ -49,6 +49,23 @@ class CountEmployeesTest(unittest.TestCase):
 
         self.assertEqual(6, parent.count_employees())
 
+    def test_node_is_instance_of_node_class(self):
+        node = countemps2.Node('node')
+
+        self.assertIsInstance(node, countemps2.Node)
+
+    def test_node_contains_assigned_name(self):
+        child = countemps2.Node('child')
+        node = countemps2.Node('node', children=[child])
+
+        self.assertIn('node', node.name)
+        self.assertIn('child', child.name)
+
+    def test_child_in_node_children(self):
+        child = countemps2.Node('child')
+        node = countemps2.Node('node', children=[child])
+
+        self.assertIn(child, node.children)
 
 if __name__ == '__main__':
     unittest.main()
