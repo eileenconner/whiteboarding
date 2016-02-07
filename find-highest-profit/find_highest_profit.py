@@ -26,7 +26,7 @@ def find_highest_profit_2(nums):
     for i in range(1, len(nums)):
         current_diff = nums[i] - minimum
         if current_diff > maximum:
-            minimum = current_diff
+            maximum = current_diff
         if nums[i] < minimum:
             minimum = nums[i]
     return maximum
